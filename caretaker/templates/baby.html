@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #978787;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+           
+            overflow: hidden;
+        }
+        .navbar a {
+            font-size: 20px;
+            float: right;
+            display: block;
+            color: rgb(7, 6, 6);
+            text-align: center;
+            padding: 20px 43px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #bba4a4;
+            color: black;
+        }
+        .subheading {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-box {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+        .image-box img {
+            max-width: 100%;
+            height: 70%;
+        }
+        .image-label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(233, 228, 218, 0.75) 100%);">
+
+    <div class="navbar">
+        <a href='{% url 'index' %}'>Home</a>
+        <a href='{% url 'surgical_list' %}'>Back</a>
+    </div>
+
+    <div class="subheading"><h2>New Mother and Baby Products</h2></div>
+
+    <div class="image-container">
+        <div class="image-box">
+            <img src="{% static 'images/b1.png' %}">
+            <label class="image-label">Baby Wipes Teddy</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/b2.png' %}">
+            <label class="image-label">Baby Wipes Happy</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/b3.png' %}">
+            <label class="image-label">Babio Wet Tissue</label>
+        </div>
+    </div>
+    <div class="image-container">
+        <div class="image-box">
+            <img src="{% static 'images/b4.png' %}">
+            <label class="image-label">Genius Manual Massage Breast Pump</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/b5.png' %}">
+            <label class="image-label">Perfecxa Manual Massage Breast Pump</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/b6.png' %}">
+            <label class="image-label">INFI Electric Breast Pump</label>
+        </div>
+    </div>
+
+</body>
+</html>

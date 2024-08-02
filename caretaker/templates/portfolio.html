@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portfolio</title>
+    <style>
+        .navbar {
+           
+           overflow: hidden;
+       }
+       .navbar a {
+           font-size: 20px;
+           float: right;
+           display: block;
+           color: rgb(7, 6, 6);
+           text-align: center;
+           padding: 20px 43px;
+           text-decoration: none;
+       }
+       .navbar a:hover {
+           background-color: #bba4a4;
+           color: black;
+       }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: 97.5%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(233, 228, 218, 0.75) 100%);">
+    <div class="navbar">
+        
+        <a href='{% url 'admin_profile_list' %}'>Back</a>
+        
+    </div>
+    <div class="container">
+        <h2>Add Profile</h2>
+        <form action="{% url 'submit_admin_portfolio' %}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                {% csrf_token %}
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="profile-picture" name="profile_picture" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-name">Name:</label>
+                <input type="text" id="admin-name" name="admin_name" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-address">Address:</label>
+                <textarea id="admin-address" name="admin_address" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="admin-email">Email ID:</label>
+                <input type="email" id="admin-email" name="admin_email" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-phone">Phone Number:</label>
+                <input type="tel" id="admin-phone" name="admin_phone" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

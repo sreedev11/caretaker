@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Admin Profile</title>
+    <style>
+
+.form-group input:hover,
+    .form-group textarea:hover,
+    .form-group button:hover {
+        background-color: #ddd; /* Change the background color on hover */
+    }
+
+    .container:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Change the box shadow on hover */
+    }
+
+.navbar {
+            overflow: hidden;
+            
+        }
+        .navbar a {
+            font-size: 20px;
+            float: right;
+            display: block;
+            color: rgb(14, 12, 12);
+            text-align: right;
+            padding: 20px 43px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+           background-color: #bba4a4;
+           color: black;
+       }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: 97.5%;
+            padding: 10px;
+            border: 1px solid #080707;
+            border-radius: 5px;
+        }
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .profile-picture img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(233, 228, 218, 0.75) 100%);">
+    <div class="navbar">
+        
+        <a href='{% url 'admin_profile_list' %}'>Back</a>
+        
+    </div>
+    <div class="container">
+        <h2>Admin Profile</h2>
+        <div class="profile-picture">
+            <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="profile-picture" name="profile_picture">
+            </div>
+            <div class="form-group">
+                <label for="admin-name">Name:</label>
+                <input type="text" id="admin-name" name="name" value="{{ profile.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-address">Address:</label>
+                <textarea id="admin-address" name="address" rows="4" required>{{ profile.address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="admin-email">Email ID:</label>
+                <input type="email" id="admin-email" name="email" value="{{ profile.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-phone">Phone Number:</label>
+                <input type="tel" id="admin-phone" name="phone" value="{{ profile.phone }}" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

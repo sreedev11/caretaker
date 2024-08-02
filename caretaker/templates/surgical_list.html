@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Buttons</title>
+    <style>
+        .navbar {
+           
+           overflow: hidden;
+       }
+       .navbar a {
+           font-size: 20px;
+           float: right;
+           display: block;
+           color: rgb(7, 6, 6);
+           text-align: center;
+           padding: 20px 43px;
+           text-decoration: none;
+       }
+       .navbar a:hover {
+           background-color: #bba4a4;
+           color: black;
+       }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #0074D9;
+            width:340px;
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .dropdown {
+            float: right;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 20px;
+            border: none;
+            outline: none;
+            color: rgb(14, 11, 11);
+            padding: 20px 43px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #9c9292;
+            color: black;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #999393;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 20px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(233, 228, 218, 0.75) 100%);">
+
+    <div class="navbar">
+        <a href='{% url 'index' %}'>Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Products</button>
+            <div class="dropdown-content">
+                {% for category in categories %}
+                    <a href="{% url 'surgical' category.name %}">{{ category.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h1>Surgical Products</h1>
+    <div class="button-container">
+        <button class="button" onclick="location.href='{% url 'syringes'  %}'">Syringes and Other  Disposables</button>
+        <button class="button" onclick="location.href='{% url 'belts'  %}'">Beilts and Supports</button>
+        <button class="button" onclick="location.href='{% url 'support'  %}'">Support Products</button>
+        <button class="button" onclick="location.href='{% url 'gloves'  %}'">Gloves</button>
+        <button class="button" onclick="location.href='{% url 'dressing'  %}'">Dressing And Bandaids</button>
+        <button class="button" onclick="location.href='{% url 'hotwaterbag'  %}'">Hot Water Bags</button>
+        <button class="button" onclick="location.href='{% url 'thermo'  %}'">Thermometer</button>
+        <button class="button" onclick="location.href='{% url 'sthe'  %}'">Stethescope</button>
+        <button class="button" onclick="location.href='{% url 'neb'  %}'">Nebulizer</button>
+        <button class="button" onclick="location.href='{% url 'bp'  %}'">Bp Aparatus</button>
+        <button class="button" onclick="location.href='{% url 'dipers'  %}'">Diapers</button>
+        <button class="button" onclick="location.href='{% url 'hyg'  %}'">Hygene Products</button>
+        <button class="button" onclick="location.href='{% url 'baby'  %}'">New Mother and baby Products</button>
+        <button class="button" onclick="location.href='{% url 'mask'  %}'">Mask</button>
+        <button class="button" onclick="location.href='{% url 'vapor'  %}'">Vaporizer</button>
+        <button class="button" onclick="location.href='{% url 'cot'  %}'">Cotton</button>
+        <button class="button" onclick="location.href='{% url 'other'  %}'">Other Products</button>
+    </div>
+</body>
+</html>

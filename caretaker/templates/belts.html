@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #978787;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+           
+            overflow: hidden;
+        }
+        .navbar a {
+            font-size: 20px;
+            float: right;
+            display: block;
+            color: rgb(7, 6, 6);
+            text-align: center;
+            padding: 20px 43px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #bba4a4;
+            color: black;
+        }
+        .subheading {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-box {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+        .image-box img {
+            max-width: 100%;
+            height: 70%;
+        }
+        .image-label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(233, 228, 218, 0.75) 100%);">
+
+    <div class="navbar">
+        <a href='{% url 'index' %}'>Home</a>
+        <a href='{% url 'surgical_list' %}'>Back</a>
+    </div>
+
+    <div class="subheading"><h2>Belts and Supports</h2></div>
+
+    <div class="image-container">
+        <div class="image-box">
+            <img src="{% static 'images/abdo.png' %}">
+            <label class="image-label">abdominal binder</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/knee1.png' %}">
+            <label class="image-label">Knee supporter</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/wrist.png' %}">
+            <label class="image-label">Wrist Thumb Binder</label>
+        </div>
+    </div>
+    <div class="image-container">
+        <div class="image-box">
+            <img src="{% static 'images/shol.png' %}">
+            <label class="image-label">Shoulder Immobilizer</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/clav.png' %}">
+            <label class="image-label">Clavical Brace</label>
+        </div>
+        <div class="image-box">
+            <img src="{% static 'images/thi.png' %}">
+            <label class="image-label">Thigh Support</label>
+        </div>
+    </div>
+
+</body>
+</html>
